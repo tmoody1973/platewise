@@ -34,7 +34,7 @@ PlateWise is a culturally-inclusive web application designed to empower families
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/tmoody1973/platewise.git
 cd platewise
 ```
 

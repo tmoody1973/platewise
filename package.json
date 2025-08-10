@@ -63,10 +63,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/platewise/platewise.git"
+    "url": "git+https://github.com/tmoody1973/platewise.git"
   },
   "bugs": {
-    "url": "https://github.com/platewise/platewise/issues"
+    "url": "https://github.com/tmoody1973/platewise/issues"
   },
   "homepage": "https://platewise.app",
   "engines": {
