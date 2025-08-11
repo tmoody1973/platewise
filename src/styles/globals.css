@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles for cultural inclusivity and accessibility */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-primary text-neutral-800 bg-neutral-50;
+    /* Support for RTL languages */
+    direction: ltr;
+  }
+  
+  /* RTL support */
+  [dir="rtl"] {
+    direction: rtl;
+  }
+  
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    body {
+      @apply bg-white text-black;
+    }
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* Focus styles for accessibility */
+  *:focus {
+    @apply outline-none ring-2 ring-primary-blue ring-offset-2;
+  }
+  
+  /* Skip link for screen readers */
+  .skip-link {
+    @apply absolute -top-10 left-6 bg-primary-blue text-white px-4 py-2 rounded-md z-50 focus:top-6;
+  }
+}
+
+/* Component styles using @apply directive */
+@layer components {
+  /* Bento Grid System */
+  .bento-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-bento-gap-sm md:gap-bento-gap-md lg:gap-bento-gap-lg;
+  }
+  
+  .bento-card {
+    @apply bg-white rounded-bento p-6 shadow-bento border border-neutral-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-bento-hover;
+  }
+  
+  /* Cultural Badge System */
+  .cultural-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .cultural-badge-halal {
+    @apply bg-primary-green/10 text-primary-green border border-primary-green/20;
+  }
+  
+  .cultural-badge-kosher {
+    @apply bg-primary-blue/10 text-primary-blue border border-primary-blue/20;
+  }
+  
+  .cultural-badge-vegetarian {
+    @apply bg-emerald-100 text-emerald-800 border border-emerald-200;
+  }
+  
+  .cultural-badge-vegan {
+    @apply bg-lime-100 text-lime-800 border border-lime-200;
+  }
+  
+  .cultural-badge-gluten-free {
+    @apply bg-secondary-amber/10 text-secondary-amber border border-secondary-amber/20;
+  }
+  
+  /* Button Variants */
+  .btn-primary {
+    @apply bg-primary-blue text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-blue/90 focus:ring-primary-blue transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply bg-primary-green text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-green/90 focus:ring-primary-green transition-colors;
+  }
+  
+  .btn-cultural {
+    @apply bg-cultural-earth text-white px-6 py-3 rounded-lg font-medium hover:bg-cultural-earth/90 focus:ring-cultural-earth transition-colors;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary-blue text-primary-blue px-6 py-3 rounded-lg font-medium hover:bg-primary-blue hover:text-white focus:ring-primary-blue transition-colors;
+  }
+  
+  /* Form Elements */
+  .form-input {
+    @apply w-full px-4 py-3 border border-neutral-300 rounded-lg focus:border-primary-blue focus:ring-primary-blue bg-white text-neutral-800;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-neutral-700 mb-2;
+  }
+  
+  /* Cultural Color Backgrounds - using direct color values */
+  .bg-cultural-warm {
+    background-color: #FFF3E0;
+  }
+  
+  .bg-cultural-fresh {
+    background-color: #E8F5E8;
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  /* Text utilities for multilingual support */
+  .text-mobile-responsive {
+    @apply text-mobile-sm md:text-mobile-base lg:text-mobile-lg;
+  }
+  
+  /* RTL utilities */
+  .rtl\:text-right {
+    direction: rtl;
+    text-align: right;
+  }
+  
+  .rtl\:ml-auto {
+    direction: rtl;
+    margin-left: auto;
+  }
+  
+  /* Accessibility utilities */
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+  }
+  
+  /* Animation utilities that respect reduced motion */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Cultural sensitivity utilities */
+  .avoid-red {
+    /* Utility to remind developers to avoid red in cultural contexts */
+    @apply text-neutral-600;
+  }
+}
