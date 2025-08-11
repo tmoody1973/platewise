@@ -15,7 +15,12 @@
     "test:accessibility": "vitest run --config vitest.a11y.config.js",
     "test:all": "npm run test:cultural && npm run test:accessibility && npm run test:api",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "eslint . --ext js,jsx --fix"
+    "lint:fix": "eslint . --ext js,jsx --fix",
+    "deploy:simulate": "./scripts/deploy.sh",
+    "deploy:staging": "vercel --target staging",
+    "deploy:production": "vercel --prod",
+    "db:migrate": "supabase db push",
+    "db:reset": "supabase db reset"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.38.0",

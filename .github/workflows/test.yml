@@ -1,0 +1,52 @@
+name: Test CI/CD Setup
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop, main ]
+
+jobs:
+  test-setup:
+    name: 🧪 Test CI/CD Setup
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run linting
+      run: npm run lint
+      
+    - name: Run basic tests
+      run: npm test -- --run
+      
+    - name: Build application
+      run: npm run build
+      
+    - name: Test cultural sensitivity
+      run: npm run test:cultural -- --run
+      
+    - name: Test accessibility compliance
+      run: npm run test:accessibility -- --run
+      
+    - name: Test API integration
+      run: npm run test:api -- --run
+      
+    - name: Generate coverage report
+      run: npm run test:coverage
+      
+    - name: Upload coverage
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-report
+        path: coverage/

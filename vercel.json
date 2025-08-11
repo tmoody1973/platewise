@@ -1,0 +1,77 @@
+{
+  "name": "platewise",
+  "version": 2,
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm ci",
+  "devCommand": "npm run dev",
+  "env": {
+    "VITE_SUPABASE_URL": "@supabase-url",
+    "VITE_SUPABASE_ANON_KEY": "@supabase-anon-key",
+    "VITE_OPENAI_API_KEY": "@openai-api-key",
+    "VITE_KROGER_CLIENT_ID": "@kroger-client-id",
+    "VITE_KROGER_CLIENT_SECRET": "@kroger-client-secret",
+    "VITE_SPOONACULAR_API_KEY": "@spoonacular-api-key",
+    "VITE_EDAMAM_APP_ID": "@edamam-app-id",
+    "VITE_EDAMAM_APP_KEY": "@edamam-app-key",
+    "VITE_ELEVENLABS_API_KEY": "@elevenlabs-api-key",
+    "VITE_GOOGLE_PLACES_API_KEY": "@google-places-api-key"
+  },
+  "build": {
+    "env": {
+      "VITE_SUPABASE_URL": "@supabase-url",
+      "VITE_SUPABASE_ANON_KEY": "@supabase-anon-key"
+    }
+  },
+  "functions": {
+    "app/api/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.supabase.co https://api.openai.com https://api.kroger.com https://api.spoonacular.com https://api.edamam.com https://api.elevenlabs.io;"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/auth/callback",
+      "destination": "/dashboard",
+      "statusCode": 302
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    }
+  ],
+  "regions": ["iad1", "sfo1"],
+  "github": {
+    "enabled": true,
+    "autoAlias": true
+  }
+}
